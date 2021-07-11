@@ -12,9 +12,9 @@ var brick1,brick,brick2,brick4,brick3,brick6,brick5,brick7,brick8,brick9,brick10
 var bricks=[];
 var monsters=[];
 var pictures=[];
-//var bat,chess,control,crown,cycle,dice,dog,elephant,fan,fan2,flower,giraffee,horse,ice,key,knife,lock,tree;
+var sign;
 
-gameState=0;
+var gameState=0;
 function preload()
 {
   win_img=loadImage("win.png");
@@ -100,30 +100,31 @@ background(bg2);
   hunt.scale=0.4;
  
   player.addImage(man);
+
   player.scale=0.1;
  
 if(keyIsDown(RIGHT_ARROW))
   {
-    player.velocityX=4;
-    player.velocityY=0;
+    player.x=player.x+15;
+    player.y=player.y+0;
   }
   
   if (keyIsDown(LEFT_ARROW))
   {
-    player.velocityX=-4;
-    player.velocityY=0;
+    player.x=player.x-15;
+    player.y=player.y+0;
   }
   
   if (keyIsDown(UP_ARROW))
   {
-    player.velocityX=0;
-    player.velocityY=-4;
+    player.x=player.x+0;
+    player.y=player.y-15;
   }
   
   if (keyIsDown(DOWN_ARROW))
   {
-    player.velocityX=0;
-    player.velocityY=4;
+    player.x=player.x+0;
+    player.y=player.y+15;
   }
 
 
@@ -274,8 +275,8 @@ monster4.scale=0.14;
 monster4.bounceOff(bricks);
  monsters.push(monster1,monster2,monster3,monster4);
  /*for(var i=0;i<monsters.length;i++){
-monsters[i].velocityX=random(1,4);
-monsters[i].velocityY=random(1,4);
+monsters[i].x=random(1,4);
+monsters[i].y=random(1,4);
 
 if(monsters[i].isTouching(bricks))
 {
@@ -296,7 +297,7 @@ if(monsters[i].isTouching(bricks))
  lives.scale=0.2;
  var score=5;
  text(":"+score,945,35);
- var sign=createSprite(348,75);
+sign=createSprite(348,75);
  sign.addImage(signs);
   sign.scale=0.1;
   for(var i=0;i<monsters.length;i++)
@@ -328,7 +329,8 @@ for(var i=0;i<bricks.length;i++)
 if(gameState===2)
 {
   background(bg3);
-
+player.scale=0.000000000000001;
+sign.scale=0.000000000000001;
 
  bat=createSprite(877,202);
 bat.addImage(bat_img);
